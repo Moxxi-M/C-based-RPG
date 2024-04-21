@@ -9,7 +9,7 @@ int manaPoints = 0;
 int staminaLevel = 50;
 int luckLevel = 1 + rand() % (100 - 1 + 1);
 int dabloonDollars = 3;
-bool displaystats = 1;
+int displaystats = 1;
 
 void displayStats()
 {
@@ -68,6 +68,7 @@ int main()
         cout << "Please pick a valid input " << endl;
         cout << "Would you like to display your stats before making a choice (ALL) (1:yes) (2:no): ";
         cin >> displaystats;
+        cout << endl;
     }
 
     cout << endl;
@@ -105,7 +106,7 @@ int main()
     Sleep(1500);
 
     // story choice 1
-    int choice1;
+    int choice1 = 0;
     cout << endl;
     cout << endl;
     cout << "You stumble around the forest, and encounter a fork in the trees do you go left (1) or forward (2)?" << endl;
@@ -137,7 +138,7 @@ int main()
 
         if (choice2 == 1)
         {
-            int choice3;
+            int choice3 = 0;
             cout << endl;
             cout << "You walk toward the clearing, catching a glipse of a red-hot altar, with a group of people surrounding it";
             PrintElipse();
@@ -169,11 +170,12 @@ int main()
                  << endl;
             Sleep(1000);
             cout << "The chanting grows louder as the cultists walk with rythmic and hypnotic movments." << endl;
-            Sleep(18800);
+            Sleep(1800);
             cout << "Their covered tattered robes of crimson and black, concealing their faces behind grotesque masks of bones and leather";
             PrintElipse();
-            Sleep(3000);
-            cout << " Their melodic chant continues yet you must make a choice: " << endl;
+            Sleep(3400);
+            cout << endl;
+            cout << "Their melodic chant continues yet you must make a choice: " << endl;
             Sleep(2000);
             cout << " (1) ~ Join the cult and become an instrument in the awakening of Cthulhu." << endl;
             Sleep(350);
@@ -201,7 +203,7 @@ int main()
             }
         }
 
-        if (choice2 == 1)
+        if (choice2 == 2)
         {
             // leads to town / village
         }
