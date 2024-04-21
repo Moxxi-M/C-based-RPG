@@ -52,26 +52,35 @@ int main()
     // Introduction
     cout << "Welcome to your adventure" << endl;
     PrintElipse();
-    cout << "choose your choices wisley." << endl;
+    cout << "Make your decisions wisely." << endl;
 
     Sleep(2400); // readablity pause
 
     cout << endl;
     cout << " Please configure your settings: "
          << endl
-         << " - Display stats before choices (ALL) (1:yes) (2:no)" << endl; // add ablility to view stats at any time with /stats command ??
+         << " - Display stats before making a choice (ALL) (1:yes) (2:no)" << endl; // add ablility to view stats at any time with /stats command ??
 
     cin >> displaystats; // select choice
+
+    while (displaystats != 1 && displaystats != 2)
+    {
+        cout << "Please pick a valid input " << endl;
+        cout << "Would you like to display your stats before making a choice (ALL) (1:yes) (2:no): ";
+        cin >> displaystats;
+    }
+
     cout << endl;
 
     Sleep(2400);
 
     cout << "starting game";
+
     PrintElipse();
     Sleep(600);
     cout << "[";
     Sleep(300);
-    cout << "LO4D1G ";
+    cout << "LO4D1NG ";
     Sleep(300);
     cout << "C0MpL3tE]" << endl;
     Sleep(150);
@@ -80,15 +89,24 @@ int main()
 
     Sleep(1000);
 
-    cout
-        << "You find yourself standing in a deep forest" << endl
-        << "You're injured";
+    cout << "You find yourself standing in a deep forest" << endl;
+    Sleep(550);
+    cout << "You're injured";
     PrintElipse();
+    cout << endl;
+    cout
+        << " -------------------" << endl
+        << " |  ^   ^   ^   ^  |" << endl
+        << " | /|\\ /|\\ /|\\ /|\\ |" << endl
+        << " | /|\\ /|\\ /|\\ /|\\ |" << endl
+        << " | /|\\ /|\\ /|\\ /|\\ |" << endl
+        << " -------------------" << endl;
 
     Sleep(1500);
 
     // story choice 1
     int choice1;
+    cout << endl;
     cout << endl;
     cout << "You stumble around the forest, and encounter a fork in the trees do you go left (1) or forward (2)?" << endl;
     cout << endl;
@@ -98,15 +116,20 @@ int main()
     if (choice1 == 1)
     {
         int choice2;
-        cout << "You head down the left path, which leads you deeper into the forest";
+        cout << endl
+             << "You head down the left path, which leads you deeper into the forest";
         PrintElipse();
-        cout << endl;
+        Sleep(850);
         cout << "You hear weird animals growling and hissing around you";
         PrintElipse();
+        Sleep(250);
         cout << "You continue walking, and see a small clearing with a firey glow";
         PrintElipse();
+        Sleep(800);
+        cout << endl;
         cout << "Do you go toward the clearing (1) or try to hide for the night (2)" << endl;
         cout << endl;
+        Sleep(150);
         displayStats();
         cin >> choice2;
 
@@ -114,11 +137,73 @@ int main()
 
         if (choice2 == 1)
         {
+            int choice3;
             cout << endl;
             cout << "You walk toward the clearing, catching a glipse of a red-hot altar, with a group of people surrounding it";
             PrintElipse();
+            cout << "You crawl behind the bushes and see a cultist group "
+                 << endl;
+
+            PrintElipse();
+            Sleep(400);
+            cout << "They are chanting: ";
+            PrintElipse();
+            Sleep(900);
+            cout << " ' Ph ";
+            Sleep(500);
+            cout << "'nglui mglw'nafh";
+            Sleep(500);
+            cout << "Cthulhu R'lyeh ";
+            Sleep(250);
+            cout << "wgah'nagl fhtagn!'";
+            Sleep(900);
             cout << endl
-                 << "";
+                 << endl;
+            Sleep(800);
+            cout << "As they chant they march in unison around an altar," << endl;
+            Sleep(1000);
+            cout << "3tched with bl4shpem0us $ymb0ls th4t app3ar t# emit a gLow. "
+                 << endl;
+            Sleep(1700);
+            cout << "Circling the altar are tall firey torches casting large shadows across the floor,"
+                 << endl;
+            Sleep(1000);
+            cout << "The chanting grows louder as the cultists walk with rythmic and hypnotic movments." << endl;
+            Sleep(18800);
+            cout << "Their covered tattered robes of crimson and black, concealing their faces behind grotesque masks of bones and leather";
+            PrintElipse();
+            Sleep(3000);
+            cout << " Their melodic chant continues yet you must make a choice: " << endl;
+            Sleep(2000);
+            cout << " (1) ~ Join the cult and become an instrument in the awakening of Cthulhu." << endl;
+            Sleep(350);
+            cout << " (2) ~ Stop the cults goal of summoning Cuthulu to the world." << endl;
+            Sleep(350);
+            cout << " (3) ~ Run away from the demonic cultists and try to avoid their haunting chants." << endl;
+
+            if (choice3 == 1)
+            {
+                // start of murderer path + main access to temple of sacrifice
+                cout << "You smear some mud on your face, mimicing demonic markings";
+                PrintElipse();
+                cout << endl
+                     << "You start to join the chant as the cult members notice you emerging from the shrubery.";
+            }
+
+            if (choice3 == 2)
+            {
+                // start of deer distraction allow you to get away and warn a near by village
+            }
+
+            if (choice3 == 3)
+            {
+                // start of chase scene, must make choices path should be 1, 2, 1
+            }
+        }
+
+        if (choice2 == 1)
+        {
+            // leads to town / village
         }
     }
     else if (choice1 == 2)
@@ -140,7 +225,7 @@ int main()
         }
         else if (choice2 == 2)
         {
-            cout << "You walk towards the house.." << endl;
+            cout << "You walk back yet loose your way " << endl;
         }
     }
     else
