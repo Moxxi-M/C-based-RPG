@@ -5,6 +5,7 @@
 using namespace std;
 
 int healthPoints = 30;
+int sanityPoints = 80;
 int manaPoints = 0;
 int staminaLevel = 50;
 int luckLevel = 1 + rand() % (100 - 1 + 1);
@@ -17,6 +18,7 @@ void displayStats()
     {
         cout << "Stats:" << endl
              << "Health: " << healthPoints << endl
+             << "Sanity: " << sanityPoints << endl
              << "Mana: " << manaPoints << endl
              << "Stamina: " << staminaLevel << endl
              << "Dabloons: " << dabloonDollars << endl;
@@ -165,6 +167,7 @@ int main()
             Sleep(1000);
             cout << "3tched with bl4shpem0us $ymb0ls th4t app3ar t# emit a gLow. "
                  << endl;
+            sanityPoints = sanityPoints - 10;
             Sleep(1700);
             cout << "Circling the altar are tall firey torches casting large shadows across the floor,"
                  << endl;
@@ -183,13 +186,20 @@ int main()
             Sleep(350);
             cout << " (3) ~ Run away from the demonic cultists and try to avoid their haunting chants." << endl;
 
+            displayStats();
+
             if (choice3 == 1)
             {
                 // start of murderer path + main access to temple of sacrifice
                 cout << "You smear some mud on your face, mimicing demonic markings";
                 PrintElipse();
                 cout << endl
-                     << "You start to join the chant as the cult members notice you emerging from the shrubery.";
+                     << "You start to join the chant as the cult members notice you emerging from the shrubery."
+                     << endl;
+                cout << "Your limping out of the shrubbery as the cult members slow down." << endl
+                     << "You put pressure on your limping leg to stand straight.";
+                Sleep(700);
+                healthPoints = healthPoints - 13;
             }
 
             if (choice3 == 2)
@@ -205,7 +215,32 @@ int main()
 
         if (choice2 == 2)
         {
-            // leads to town / village
+            int choice3 = 0; // redeclaring
+            cout << "You walk toward some shrubery, you feel tired and would like to rest. Animals hiss around you; loud thudding and inaudable chants come from a field in the distance." << endl;
+            cout << "You must make a decision, your injuries could get worse if you continue, do you:" << endl;
+            cout << " (1) ~ Gather supplies for a small shelter for the night. " << endl
+                 << " (2) ~ Keep walking in search of assistance..." << endl
+                 << " (3) ~ Try to make your way back... " << endl; // shelter path
+
+            if (choice3 = 1)
+            {
+                cout << "You look around, searching for things on the ground." << endl;
+                Sleep(1000);
+                cout << "You find some supplies, what do you select to make a shelter: " << endl;
+                cout << " (1) ~ Logs, Vines, Rocks ";           // reduces sanity stat ./ increases health stat
+                cout << " (2) ~ Leaves, Large Branches, Dirt "; // reduces sanity stat ./ reduces health stat
+                cout << " (3) ~ Sap, Moss, Sticks ";            // increases sanity stat ./ slightly decreases health stat
+            }
+
+            if (choice3 = 2) // keep walking toward village
+            {
+                cout << "~UPCOMING PATH~";
+            }
+
+            if (choice3 = 3) // get lost toward cave
+            {
+                cout << "~UPCOMING PATH~";
+            }
         }
     }
     else if (choice1 == 2)
@@ -236,6 +271,7 @@ int main()
     }
 
     // The story will continue! This will be an exciting project!!
+    // I have LOADS of ideas
 
     return 0;
 }
