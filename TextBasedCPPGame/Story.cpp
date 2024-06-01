@@ -4,23 +4,38 @@
 #include <Windows.h>
 using namespace std;
 
+// Stat Vars
 int healthPoints = 30;
 int sanityPoints = 80;
 int manaPoints = 0;
 int staminaLevel = 50;
-int luckLevel = 1 + rand() % (100 - 1 + 1);
 int dabloonDollars = 3;
-int displaystats = 1;
+int defencePoints = 75;
 
-void displayStats()
+// Hidden Stat Vars
+int luckLevel = 1 + rand() % (100 - 1 + 1);
+
+// Gameplay Vars
+int displaystats;
+string player_Name;
+int Player_class = 1;
+string player_class_name;
+int Activate_Tutorial;
+
+// potentially more stats?
+
+void displayStats() // system could be replaced with a /viewstat command to view a specific stat
 {
     if (displaystats == 1)
     {
         cout << "Stats:" << endl
+             << "----------" << endl
+             << "Class: " << player_class_name << endl
              << "Health: " << healthPoints << endl
-             << "Sanity: " << sanityPoints << endl
-             << "Mana: " << manaPoints << endl
+             << "Defence: " << defencePoints << endl
              << "Stamina: " << staminaLevel << endl
+             << "Mana: " << manaPoints << endl
+             << "Sanity: " << sanityPoints << endl
              << "Dabloons: " << dabloonDollars << endl;
     }
 }
@@ -37,6 +52,7 @@ void PrintElipse()
 
 int main()
 {
+    int Player_class = Player_class * 1;
 
     // Loot array (future loot)
     struct LootItem
@@ -55,27 +71,135 @@ int main()
     cout << "Welcome to your adventure" << endl;
     PrintElipse();
     cout << "Make your decisions wisely." << endl;
+    cout << "`this is a small passion project (currently still is)` ~ Moksh N." << endl;
 
     Sleep(2400); // readablity pause
 
+    // gameplay configuration
     cout << endl;
-    cout << " Please configure your settings: "
+    cout << "Please customise your GAMEPLAY: "
          << endl
-         << " - Display stats before making a choice (ALL) (1:yes) (2:no)" << endl; // add ablility to view stats at any time with /stats command ??
+         << "Please enter your IGN (in-game-name): ";
+    cin >> player_Name;
+
+    // player selecting class
+    cout << endl
+         << "Please select your class:" << endl;
+    cout << "(1) ~ Assassin" << endl
+         << "(2) ~ Mage" << endl
+         << "(3) ~ Tank" << endl
+         << "(4) ~ Knight" << endl
+         << "(5) ~ Raider" << endl;
+
+    cin >> Player_class;
+
+    while (Player_class != 1 && Player_class != 2 && Player_class != 3 && Player_class != 4 && Player_class != 5)
+    {
+        cout << "Please select a class from the list above.";
+        cin >> Player_class;
+    }
+
+    /*
+    ANNOUNCING BUFFS
+    Possible stats:
+    manaPoints
+    staminaLevel
+    defencePoints
+    healthPoints
+    sanityPoints
+    */
+
+    if (Player_class == 1)
+    { // assassin
+        staminaLevel = 83;
+        defencePoints = 75;
+        Sleep(300);
+        cout << "[ Assassin class has been selected. You have been buffed appropriatley. ]" << endl
+             << endl;
+        Sleep(300);
+        player_class_name = "Assassin";
+    }
+
+    if (Player_class == 2)
+    { // Mage
+        manaPoints = 50;
+        defencePoints = 75;
+        Sleep(300);
+        cout << "[ Mage class has been selected. You have been buffed appropriatley. ]" << endl
+             << endl;
+        Sleep(300);
+        player_class_name = "Mage";
+    }
+
+    if (Player_class == 3)
+    { // Tank
+        healthPoints = 100;
+        defencePoints = 95;
+        Sleep(300);
+        cout << "[ Tank class has been selected. You have been buffed appropriatley. ]" << endl
+             << endl;
+        Sleep(300);
+        player_class_name = "Tank";
+    }
+
+    if (Player_class == 4)
+    { // Knight
+        healthPoints = 95;
+        staminaLevel = 64;
+        Sleep(300);
+        cout << "[ Knight class has been selected. You have been buffed appropriatley. ]" << endl
+             << endl;
+        Sleep(300);
+        player_class_name = "Knight";
+    }
+
+    if (Player_class == 5)
+    { // Raider
+        healthPoints = 65;
+        sanityPoints = 90;
+        Sleep(300);
+        cout << "[ Raider class has been selected. You have been buffed appropriatley. ]" << endl
+             << endl;
+        Sleep(300);
+        player_class_name = "Raider";
+    }
+
+    // player selecting settings
+    cout << "Would you like to display stats before making a choice [ALL] (1) Yes (2) No"
+         << endl; // add ablility to view stats at any time with /stats command ??
 
     cin >> displaystats; // select choice
 
     while (displaystats != 1 && displaystats != 2)
     {
         cout << "Please pick a valid input " << endl;
-        cout << "Would you like to display your stats before making a choice (ALL) (1:yes) (2:no): ";
+        cout << "Would you like to display your stats before making a choice [ALL] (1) Yes (2) No: ";
         cin >> displaystats;
         cout << endl;
     }
 
     cout << endl;
 
+    cout << "Would you like to read the TUTORIAL? [ONE TIME PER RUN] (1) Yes (2) No: " << endl;
+    cin >> Activate_Tutorial;
+
+    while (Activate_Tutorial != 1 && Activate_Tutorial != 2)
+    {
+        cout << "please select a valid option.";
+        cin >> Activate_Tutorial;
+    }
+
+    if (Activate_Tutorial == 1)
+    {
+        cout << "[insert tutorial text here.]";
+    }
+    else
+    {
+        Activate_Tutorial == 2;
+    }
     Sleep(2400);
+
+    // starting game
 
     cout << "starting game";
 
@@ -87,8 +211,7 @@ int main()
     Sleep(300);
     cout << "C0MpL3tE]" << endl;
     Sleep(150);
-    cout << "ENJOY" << endl
-         << "-----------------------------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------------------" << endl;
 
     Sleep(1000);
 
@@ -116,6 +239,13 @@ int main()
     displayStats();
     cin >> choice1;
 
+    while (choice1 != 1 && choice1 != 2)
+    {
+        cout << "You stumble in confusion. Perhaps you should choose left (1) or right (2)." << endl;
+        cin >> choice1;
+        cout << endl;
+    }
+
     if (choice1 == 1)
     {
         int choice2;
@@ -135,6 +265,13 @@ int main()
         Sleep(150);
         displayStats();
         cin >> choice2;
+
+        while (choice1 != 1 && choice1 != 2)
+        {
+            cout << "You stumble in confusion. Perhaps you should choose an option, (1) or (2)." << endl;
+            cin >> choice1;
+            cout << endl;
+        }
 
         // start of cult path
 
@@ -205,6 +342,29 @@ int main()
             if (choice3 == 2)
             {
                 // start of deer distraction allow you to get away and warn a near by village
+                cout << "You look around for a means of distraction, you see a rock and a stick."
+                     << endl;
+                cout << "You must pick one to distract the cult and avoid suspicion";
+                PrintElipse();
+
+                int choice4;
+                cout << "Choose Wisely: "
+                     << endl
+                     << "(1) ~ You throw a rock";
+                Sleep(300);
+                cout << "(2) ~ You throw a stick";
+                displayStats();
+                cin >> choice4;
+
+                if (choice4 == 1)
+                {
+                    // throw rock
+                }
+
+                if (choice4 == 2)
+                {
+                    // throw stick
+                }
             }
 
             if (choice3 == 3)
@@ -216,20 +376,22 @@ int main()
         if (choice2 == 2)
         {
             int choice3 = 0; // redeclaring
-            cout << "You walk toward some shrubery, you feel tired and would like to rest. Animals hiss around you; loud thudding and inaudable chants come from a field in the distance." << endl;
-            cout << "You must make a decision, your injuries could get worse if you continue, do you:" << endl;
+            cout << "You walk toward some shrubery, you feel tired and would like to rest. Animals hiss around you; loud thudding and inaudable chants come from a field in the distance." << endl
+                 << "You must make a decision, your injuries could get worse if you continue, do you:" << endl;
             cout << " (1) ~ Gather supplies for a small shelter for the night. " << endl
                  << " (2) ~ Keep walking in search of assistance..." << endl
                  << " (3) ~ Try to make your way back... " << endl; // shelter path
 
             if (choice3 = 1)
             {
+                int choice4;
                 cout << "You look around, searching for things on the ground." << endl;
                 Sleep(1000);
                 cout << "You find some supplies, what do you select to make a shelter: " << endl;
                 cout << " (1) ~ Logs, Vines, Rocks ";           // reduces sanity stat ./ increases health stat
                 cout << " (2) ~ Leaves, Large Branches, Dirt "; // reduces sanity stat ./ reduces health stat
                 cout << " (3) ~ Sap, Moss, Sticks ";            // increases sanity stat ./ slightly decreases health stat
+                cin >> choice4;
             }
 
             if (choice3 = 2) // keep walking toward village
@@ -264,10 +426,6 @@ int main()
         {
             cout << "You walk back yet loose your way " << endl;
         }
-    }
-    else
-    {
-        cout << "You stumble in confusion. Perhaps you should choose left or right next time." << endl;
     }
 
     // The story will continue! This will be an exciting project!!
